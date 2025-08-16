@@ -21,9 +21,18 @@ app.post('cats', (res, req) => {
 app.get('/cats', (req, res) => {
     res.send("MEOW")
 })
-app.get('/dogs', (req, res) => { 
+app.get('/dogs', (req, res) => {
     res.send("WOOF")
 })
+
+app.get('/search', (req, res) => {
+    const { q } = req.query;
+    if (!q) {
+        res.send("nothing found if nothing searched")
+    }
+    res.send(`search results for: ${q}`)
+})
+
 app.get(/(.*)/, (req, res) => {
     res.send("I don't know that path")
 })
